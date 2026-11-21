@@ -1,4 +1,5 @@
 interface PageHeaderProps {
+  children?: React.ReactNode;
   title: string;
   description?: string;
 }
@@ -17,3 +18,9 @@ export function PageHeader({ title, description }: PageHeaderProps) {
     </div>
   );
 }
+
+export function DemoBanner() {
+  return <div className="bg-yellow-100 text-yellow-800 p-2 text-center text-sm">Demo Mode</div>;
+}
+export function DemoBanner() { return <div className='bg-yellow-100 text-yellow-800 p-2 text-center text-sm'>Demo Mode</div>; }
+
