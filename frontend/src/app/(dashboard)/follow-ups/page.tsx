@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PageHeader } from "@/components/layout/page-header";
 
 // --- Data Types ---
@@ -23,7 +23,11 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState("Upcoming");
   const [followUps, setFollowUps] = useState<FollowUp[]>(initialFollowUps);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split("T")[0]);
+  const [selectedDate, setSelectedDate] = useState("");
+  
+  useEffect(() => {
+    setSelectedDate(new Date().toISOString().split("T")[0]);
+  }, []);
   
   // Form State
   const [newTask, setNewTask] = useState({ name: "", time: "12:00", type: "Call", priority: "Medium" });
@@ -33,7 +37,6 @@ export default function Page() {
     e.preventDefault();
     if (!newTask.name || !selectedDate) return;
 
-    // Combine selected date and time
     const fullDate = `${selectedDate}T${newTask.time}`;
     
     const newEntry: FollowUp = {
@@ -63,14 +66,12 @@ export default function Page() {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     
     const days = [];
-    // Empty slots for the first week
     for (let i = 0; i < firstDay; i++) {
       days.push(<div key={`empty-${i}`} className="py-2 text-transparent">0</div>);
     }
-    // Actual days
     for (let i = 1; i <= daysInMonth; i++) {
       const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(i).padStart(2, "0")}`;
-      const hasFollowUp = followUps.some(f => f.date.startsWith(dateStr));
+      const hasFollowUp = followUps.some((f: FollowUp) => f.date.startsWith(dateStr));
       
       days.push(
         <div 
@@ -127,7 +128,7 @@ export default function Page() {
             </div>
 
             <div className="divide-y divide-border">
-              {activeTab === "Upcoming" && followUps.map((task) => (
+              {activeTab === "Upcoming" && followUps.map((task: FollowUp) => (
                 <div key={task.id} className="p-4 flex items-center justify-between hover:bg-secondary/50 transition-colors">
                   <div>
                     <h3 className="font-semibold text-foreground">{task.name}</h3>
