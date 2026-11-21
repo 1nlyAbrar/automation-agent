@@ -22,5 +22,5 @@ export function PageHeader({ title, description }: PageHeaderProps) {
 export function DemoBanner() {
   return <div className="bg-yellow-100 text-yellow-800 p-2 text-center text-sm">Demo Mode</div>;
 }
-export function DemoBanner() { return <div className='bg-yellow-100 text-yellow-800 p-2 text-center text-sm'>Demo Mode</div>; }
+
 
