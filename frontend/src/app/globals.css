@@ -1,0 +1,197 @@
+﻿@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f8f7fc;
+  --foreground: #1f1235;
+  --card: #ffffff;
+  --card-foreground: #1f1235;
+  --popover: #ffffff;
+  --popover-foreground: #1f1235;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #f1ebfa;
+  --secondary-foreground: #4c1d95;
+  --muted: #f1ebfa;
+  --muted-foreground: #6b7280;
+  --accent: #FFC800;
+  --accent-foreground: #111827;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e9d5ff;
+  --input: #e9d5ff;
+  --ring: #7c3aed;
+  --radius: 0.75rem;
+
+  --chart-1: #7c3aed; 
+  --chart-2: #FFC800; 
+  --chart-3: #a855f7; 
+  --chart-4: #facc15; 
+  --chart-5: #4c1d95; 
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1f1235;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1ebfa;
+  --sidebar-accent-foreground: #4c1d95;
+  --sidebar-border: #e9d5ff;
+  --sidebar-ring: #7c3aed;
+}
+
+.dark {
+  --background: #0f0518; 
+  --foreground: #f3e8ff; 
+  --card: #1c0a2e; 
+  --card-foreground: #f3e8ff;
+  --popover: #1c0a2e;
+  --popover-foreground: #f3e8ff;
+  --primary: #a855f7; 
+  --primary-foreground: #ffffff;
+  --secondary: #2e104a; 
+  --secondary-foreground: #f3e8ff;
+  --muted: #2e104a;
+  --muted-foreground: #d8b4fe; 
+  --accent: #FFC800; 
+  --accent-foreground: #0f0518;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #4c1d95; 
+  --input: #4c1d95;
+  --ring: #a855f7;
+
+  --chart-1: #a855f7; 
+  --chart-2: #FFC800; 
+  --chart-3: #d8b4fe; 
+  --chart-4: #fde047; 
+  --chart-5: #c4b5fd; 
+
+  --sidebar: #1c0a2e;
+  --sidebar-foreground: #f3e8ff;
+  --sidebar-primary: #a855f7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2e104a;
+  --sidebar-accent-foreground: #f3e8ff;
+  --sidebar-border: #4c1d95;
+  --sidebar-ring: #a855f7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 3D Glow Effect */
+.glow-card {
+  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.08), 
+              0 0 1px 1px rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.15);
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  box-shadow: 0 8px 30px -2px rgba(124, 58, 237, 0.15), 
+              0 0 2px 1px rgba(124, 58, 237, 0.2);
+  transform: translateY(-2px);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.dark .glow-card {
+  box-shadow: 0 4px 20px -2px rgba(168, 85, 247, 0.15), 
+              0 0 1px 1px rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.3);
+  background: linear-gradient(145deg, #1c0a2e, #150523);
+}
+
+.dark .glow-card:hover {
+  box-shadow: 0 8px 30px -2px rgba(168, 85, 247, 0.3), 
+              0 0 2px 1px rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+/* --- PRINT STYLES FOR PDF GENERATION --- */
+@media print {
+  aside, header, button, .no-print {
+    display: none !important;
+  }
+
+  body, .bg-background {
+    background: white !important;
+    color: black !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Force the chat box to expand fully */
+  .glow-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  /* Expand the chat container (fixes the cut-off) */
+  .h-\[500px\] {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Expand the message container */
+  .overflow-y-auto {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
