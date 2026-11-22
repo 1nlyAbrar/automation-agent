@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div className="max-w-7xl mx-auto space-y-6 pb-12">
       <PageHeader
-        title="Good morning, ABRAR"
+        title="Good morning, Abrar"
         description="Here's how your business looks today."
       />
 
